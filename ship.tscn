@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://50eis2heevsy"]
+
+[ext_resource type="Script" path="res://ship.gd" id="1_gdgq5"]
+[ext_resource type="Texture2D" uid="uid://djj4b3e3r6xya" path="res://ship.png" id="1_ys7vy"]
+
+[node name="Ship" type="Area2D"]
+z_index = 1
+script = ExtResource("1_gdgq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ys7vy")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -4, -4, -4, -4, -7, 3, -2, 5, -2, 5, -1, 7, -1, 7, 1, 5, 1, 5, 2, 3, 2, -4, 7, -4, 4, -7, 4)
