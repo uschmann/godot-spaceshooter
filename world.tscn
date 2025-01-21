@@ -2,15 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://50eis2heevsy" path="res://ship.tscn" id="1_eh70r"]
 [ext_resource type="PackedScene" uid="uid://g6rnxrj15j4o" path="res://enemy.tscn" id="2_e83kj"]
-[ext_resource type="PackedScene" uid="uid://dbmh5kvyotxd" path="res://laser.tscn" id="3_50sb2"]
+[ext_resource type="PackedScene" uid="uid://bb3rldigum62r" path="res://enemy_spawner.tscn" id="4_4tuoi"]
 
 [node name="World" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 317.0
+offset_right = 320.0
 offset_bottom = 180.0
 color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
 [node name="Ship" parent="." instance=ExtResource("1_eh70r")]
 position = Vector2(33, 100)
@@ -27,11 +26,6 @@ position = Vector2(185, 72)
 [node name="Enemy4" parent="." instance=ExtResource("2_e83kj")]
 position = Vector2(130, 143)
 
-[node name="Laser" parent="." instance=ExtResource("3_50sb2")]
-position = Vector2(105, 45)
-
-[node name="Laser2" parent="." instance=ExtResource("3_50sb2")]
-position = Vector2(87, 142)
-
-[node name="Laser3" parent="." instance=ExtResource("3_50sb2")]
-position = Vector2(143, 91)
+[node name="EnemySpawner" parent="." instance=ExtResource("4_4tuoi")]
+position = Vector2(328, 0)
+enemy_speed_max = 500

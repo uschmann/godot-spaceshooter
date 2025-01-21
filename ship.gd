@@ -14,3 +14,8 @@ func _process(delta: float) -> void:
 		var world = get_tree().current_scene
 		world.add_child(laser)
 		laser.position = self.position
+
+
+func _on_area_entered(area: Area2D) -> void:
+	queue_free()
+	area.queue_free()
