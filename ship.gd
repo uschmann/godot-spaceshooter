@@ -3,6 +3,7 @@ extends Area2D
 @export var speed = 100
 
 const LASER_SCENE = preload("res://laser.tscn")
+@onready var explosion_creator = $EffectCreator
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
@@ -15,7 +16,7 @@ func _process(delta: float) -> void:
 		world.add_child(laser)
 		laser.position = self.position
 
-
 func _on_area_entered(area: Area2D) -> void:
-	queue_free()
+	explosion_creator.create_explosion()
+	#queue_free()
 	area.queue_free()

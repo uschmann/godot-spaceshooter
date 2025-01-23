@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://b21b7qfw1u2ex"]
+[gd_scene load_steps=7 format=3 uid="uid://b21b7qfw1u2ex"]
 
+[ext_resource type="Script" path="res://world.gd" id="1_e5ki5"]
 [ext_resource type="PackedScene" uid="uid://50eis2heevsy" path="res://ship.tscn" id="1_eh70r"]
 [ext_resource type="PackedScene" uid="uid://g6rnxrj15j4o" path="res://enemy.tscn" id="2_e83kj"]
+[ext_resource type="FontFile" uid="uid://cl536k4vyjvtb" path="res://pixel_rpg.ttf" id="4_4iwhs"]
 [ext_resource type="PackedScene" uid="uid://bb3rldigum62r" path="res://enemy_spawner.tscn" id="4_4tuoi"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_oibeu"]
+font = ExtResource("4_4iwhs")
+font_size = 6
+shadow_size = 0
+
 [node name="World" type="Node2D"]
+script = ExtResource("1_e5ki5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
@@ -29,3 +37,25 @@ position = Vector2(130, 143)
 [node name="EnemySpawner" parent="." instance=ExtResource("4_4tuoi")]
 position = Vector2(328, 0)
 enemy_speed_max = 500
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 64.0
+offset_right = 256.0
+offset_bottom = 23.0
+text = "Score: 00"
+label_settings = SubResource("LabelSettings_oibeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+position = Vector2(320, 90)
+amount = 200
+lifetime = 7.0
+preprocess = 7.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0

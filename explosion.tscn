@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgny2uwmbabpk"]
+
+[ext_resource type="Texture2D" uid="uid://bsw7qv23mbf5w" path="res://explosion.png" id="1_dm7oq"]
+[ext_resource type="Script" path="res://explosion.gd" id="2_b6ehs"]
+[ext_resource type="AudioStream" uid="uid://cjy88kwewyk3q" path="res://explosion_sound.wav" id="3_vqaos"]
+
+[sub_resource type="Animation" id="Animation_j2n4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1ipti"]
+resource_name = "explode"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipfx7"]
+_data = {
+"RESET": SubResource("Animation_j2n4b"),
+"explode": SubResource("Animation_1ipti")
+}
+
+[node name="Explosion" type="Sprite2D"]
+texture = ExtResource("1_dm7oq")
+hframes = 6
+script = ExtResource("2_b6ehs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ipfx7")
+}
+autoplay = "explode"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vqaos")
+volume_db = -10.0
+autoplay = true
