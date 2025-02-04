@@ -1,10 +1,11 @@
 extends Area2D
 
+signal ship_destroyed
+
 @export var speed = 100
 
 const LASER_SCENE = preload("res://laser.tscn")
 @onready var explosion_creator = $EffectCreator
-@onready var game_over_timer: Timer = $GameOverTimer
 
 var is_dead = false
 
@@ -29,8 +30,5 @@ func _on_area_entered(area: Area2D) -> void:
 	area.queue_free()
 	is_dead = true
 	hide()
-	game_over_timer.start()
-
-
-func _on_game_over_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://start_menu.tscn")
+	MusicPlayer.stop()
+	ship_destroyed.emit()
