@@ -24,7 +24,18 @@ label_settings = ExtResource("1_ghhn1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
+[node name="HighScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 80.0
+text = "Highscore: 0"
+label_settings = ExtResource("1_ghhn1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EscapeLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 160.0
